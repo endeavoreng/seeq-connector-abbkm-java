@@ -3,7 +3,7 @@
   "Connections" : [ {
     "Name" : "My First Connection",
     "Id" : "d61fae22-c8b5-4c35-855b-377c229897ca",
-    "Enabled" : true,
+    "Enabled" : false,
     "Indexing" : {
       "Frequency" : "1w",
       "OnStartupAndConfigChange" : true,

@@ -27,7 +27,7 @@ public class Main {
 
         AgentOtpHelper.setupAgentOtp(seeqDataFolder, agentName);
 
-        String seeqUrl = "https://yourserver.seeq.host";
+        String seeqUrl = "https://endeavoreng.seeq.tech";
 
         // Provide a name for the agent that differentiates it from the "normal" JVM Agent
         config.setName(agentName);
