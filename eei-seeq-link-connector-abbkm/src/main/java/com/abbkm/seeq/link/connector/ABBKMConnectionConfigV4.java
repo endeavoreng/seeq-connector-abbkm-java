@@ -1,11 +1,11 @@
-package com.mycompany.seeq.link.connector;
+package com.abbkm.seeq.link.connector;
 
 import com.seeq.link.sdk.DefaultPullDatasourceConnectionConfig;
 
 /**
  * The configuration object should be a Plain Old Java Object (POJO) with little to no logic, just fields.
  */
-public class MyConnectionConfigV1 extends DefaultPullDatasourceConnectionConfig {
+public class ABBKMConnectionConfigV4 extends DefaultPullDatasourceConnectionConfig {
     private Integer tagCount;
     private String samplePeriod;
 

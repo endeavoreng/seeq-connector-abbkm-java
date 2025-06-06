@@ -14,6 +14,7 @@ application {
 tasks {
     named("run") {
         dependsOn(":mycompany-seeq-link-connector-myconnector:installDist")
+        dependsOn(":eei-seeq-link-connector-abbkm:installDist")
     }
 }
 

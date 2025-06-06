@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.abbkm.seeq.link.connector.ABBKMConnection;
+import com.abbkm.seeq.link.connector.ABBKMConnectionConfigV4;
 import org.junit.Test;
 import org.slf4j.Logger;
 
@@ -12,10 +14,10 @@ import com.seeq.link.sdk.interfaces.GetSamplesParameters;
 import com.seeq.link.sdk.utilities.Sample;
 import com.seeq.link.sdk.utilities.TimeInstant;
 
-public class MyConnectionTest {
+public class ABBKMConnectionTest {
     @Test
     public void getSamples() {
-        MyConnectionConfigV1 config = new MyConnectionConfigV1();
+        ABBKMConnectionConfigV4 config = new ABBKMConnectionConfigV4();
 
         config.setEnabled(true);
         config.setSamplePeriod("1s");
@@ -24,7 +26,7 @@ public class MyConnectionTest {
         DatasourceConnectionServiceV2 connectionServiceMock = mock(DatasourceConnectionServiceV2.class);
         when(connectionServiceMock.log()).thenReturn(mock(Logger.class));
 
-        MyConnection connection = new MyConnection(null, config);
+        ABBKMConnection connection = new ABBKMConnection(null, config);
         connection.initialize(connectionServiceMock);
         connection.connect();
 

@@ -1,4 +1,4 @@
-package com.mycompany.seeq.link.connector;
+package com.abbkm.seeq.link.connector;
 
 import java.math.RoundingMode;
 import java.time.Duration;

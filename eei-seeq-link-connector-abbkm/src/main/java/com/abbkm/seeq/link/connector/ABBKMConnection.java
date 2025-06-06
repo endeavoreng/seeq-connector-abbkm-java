@@ -1,4 +1,4 @@
-package com.mycompany.seeq.link.connector;
+package com.abbkm.seeq.link.connector;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -41,13 +41,13 @@ import com.seeq.model.SignalWithIdInputV1;
  * obtained via {@link com.seeq.link.sdk.interfaces.SeeqApiProvider} on
  * {@link com.seeq.link.sdk.interfaces.AgentService} on {@link DatasourceConnectionServiceV2}.
  */
-public class MyConnection implements SignalPullDatasourceConnection, ConditionPullDatasourceConnection {
-    private final MyConnector connector;
-    private final MyConnectionConfigV1 connectionConfig;
+public class ABBKMConnection implements SignalPullDatasourceConnection, ConditionPullDatasourceConnection {
+    private final ABBKMConnector connector;
+    private final ABBKMConnectionConfigV4 connectionConfig;
     private DatasourceConnectionServiceV2 connectionService;
     private DatasourceSimulator datasourceSimulator;
 
-    public MyConnection(MyConnector connector, MyConnectionConfigV1 connectionConfig) {
+    public ABBKMConnection(ABBKMConnector connector, ABBKMConnectionConfigV4 connectionConfig) {
         // You will generally want to accept a configuration object from your connector parent. Do not do any I/O in the
         // constructor -- leave that for the other functions like initialize() or connect(). Generally, you should just
         // be setting private fields in the constructor.
@@ -60,7 +60,7 @@ public class MyConnection implements SignalPullDatasourceConnection, ConditionPu
     public String getDatasourceClass() {
         // Return a string that identifies this type of datasource. Example: "ERP System"
         // This value will be seen in the Information panel in Seeq Workbench.
-        return "My Connector Type";
+        return "ABBKM-V3";
     }
 
     @Override
@@ -270,7 +270,7 @@ public class MyConnection implements SignalPullDatasourceConnection, ConditionPu
         // create the root asset
         AssetInputV1 rootAsset = new AssetInputV1();
         rootAsset.setDataId(datasourceDataId);
-        rootAsset.setName("My Datasource Name");
+        rootAsset.setName("ABBKM Root");
         this.connectionService.putRootAsset(rootAsset);
 
         return rootAsset.getDataId();

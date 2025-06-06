@@ -7,14 +7,18 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.Map;
 
+import com.abbkm.seeq.link.connector.ABBKMConnector;
+import com.abbkm.seeq.link.connector.ABBKMConnection;
+import com.abbkm.seeq.link.connector.ABBKMConnectionConfigV4;
+import com.abbkm.seeq.link.connector.ABBKMConnectorConfigV4;
 import com.seeq.link.sdk.ConfigObject;
 import com.seeq.link.sdk.interfaces.ConnectorServiceV2;
 import com.seeq.link.sdk.testframework.SignalPullConnectionTestSuite;
 
-public class MyConnectorSignalStandardTest extends SignalPullConnectionTestSuite<MyConnection, MyConnector,
-        MyConnectionConfigV1, MyConnectorConfigV1> {
-    private MyConnector myConnectorMock;
-    private MyConnection myConnection;
+public class ABBKMConnectorSignalStandardTest extends SignalPullConnectionTestSuite<ABBKMConnection, ABBKMConnector,
+        ABBKMConnectionConfigV4, ABBKMConnectorConfigV4> {
+    private ABBKMConnector ABBKMConnectorMock;
+    private ABBKMConnection ABBKMConnection;
 
     private final Map<StandardTest, String> DATA_IDS_FOR_STANDARD_TESTS = Map.of(
             StandardTest.NoSamplesOutsideBoundary, "signal-data-id-1",
@@ -59,13 +63,13 @@ public class MyConnectorSignalStandardTest extends SignalPullConnectionTestSuite
     }
 
     @Override
-    public MyConnection getConnection() {
-        return myConnection;
+    public ABBKMConnection getConnection() {
+        return ABBKMConnection;
     }
 
     @Override
-    public MyConnector getConnector() {
-        return myConnectorMock;
+    public ABBKMConnector getConnector() {
+        return ABBKMConnectorMock;
     }
 
     @Override
@@ -94,12 +98,12 @@ public class MyConnectorSignalStandardTest extends SignalPullConnectionTestSuite
      */
     @Override
     public void baseConnectionOneTimeSetUp() {
-        var connectionConfig = new MyConnectionConfigV1();
+        var connectionConfig = new ABBKMConnectionConfigV4();
         connectionConfig.setSamplePeriod("1s");
         connectionConfig.setTagCount(5);
         connectionConfig.setEnabled(true);
 
-        var connectorConfig = new MyConnectorConfigV1();
+        var connectorConfig = new ABBKMConnectorConfigV4();
         connectorConfig.setConnections(List.of(connectionConfig));
 
         try {
@@ -107,8 +111,8 @@ public class MyConnectorSignalStandardTest extends SignalPullConnectionTestSuite
             when(mockConnectorService.loadConfig(any())).thenReturn(connectorConfig);
             when(mockConnectorService.log()).thenReturn(mock());
 
-            this.myConnectorMock = mock();
-            myConnection = new MyConnection(this.myConnectorMock, connectionConfig);
+            this.ABBKMConnectorMock = mock();
+            ABBKMConnection = new ABBKMConnection(this.ABBKMConnectorMock, connectionConfig);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -116,6 +120,6 @@ public class MyConnectorSignalStandardTest extends SignalPullConnectionTestSuite
 
     @Override
     public List<ConfigObject> getConnectorConfigVersions() {
-        return List.of(new MyConnectorConfigV1());
+        return List.of(new ABBKMConnectorConfigV4());
     }
 }

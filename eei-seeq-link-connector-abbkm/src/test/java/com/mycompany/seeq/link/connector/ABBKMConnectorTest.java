@@ -8,14 +8,14 @@ import junit.framework.TestSuite;
  * This unit test class is included to give you a starting point for any tests you may want to write as you develop your
  * connector.
  */
-public class MyConnectorTest extends TestCase {
+public class ABBKMConnectorTest extends TestCase {
     /**
      * Create the test case
      *
      * @param testName
      *         name of the test case
      */
-    public MyConnectorTest(String testName) {
+    public ABBKMConnectorTest(String testName) {
         super(testName);
     }
 
@@ -23,7 +23,7 @@ public class MyConnectorTest extends TestCase {
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(MyConnectorTest.class);
+        return new TestSuite(ABBKMConnectorTest.class);
     }
 
     /**
