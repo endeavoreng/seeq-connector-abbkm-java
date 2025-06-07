@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "8b048326-be38-45f7-a68d-bfa8151f75ab",
+		"name": "ABB KM API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15506828"
+	},
+	"item": [
+		{
+			"name": "ABBKM GetAvailability",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://10.138.207.92/api/GetAvailability",
+					"protocol": "http",
+					"host": [
+						"10",
+						"138",
+						"207",
+						"92"
+					],
+					"path": [
+						"api",
+						"GetAvailability"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test.aspx",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://10.138.207.92/ExtDataAccess/test.aspx",
+					"protocol": "http",
+					"host": [
+						"10",
+						"138",
+						"207",
+						"92"
+					],
+					"path": [
+						"ExtDataAccess",
+						"test.aspx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTagList",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetTagData",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
