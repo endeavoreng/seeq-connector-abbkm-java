@@ -3,6 +3,8 @@
 
 **GitHub Organization:**  [endeavoreng](https://github.com/endeavoreng)
 
+**Release:** 100.0.build
+
 # Introduction
 
 This Seeq connector for the ABB Knowledge Manager Server enables a data connection between ABB Knowledge Manager 
