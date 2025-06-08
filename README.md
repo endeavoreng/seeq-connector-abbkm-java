@@ -1,46 +1,69 @@
-# Overview
+# ABB Knowledge Manager (KM) Seeq Connector
+**Owner:**  [jtillett@endeavoreng.com](mailto:jtillett@endeavoreng.com)
 
-Welcome to the Seeq Connector SDK for Java!
+**GitHub Organization:**  [endeavoreng](https://github.com/endeavoreng)
 
-This SDK is intended for developers that wish to write a Seeq datasource connector that can be loaded by a Seeq agent
-and facilitate access to data in Seeq.
+# Introduction
 
-Seeq connectors can be written in Java or C# but this repository is intended to be used for developing Java 
-Connectors. Java development can occur on Windows, OSX or Ubuntu operating systems.
+This Seeq connector for the ABB Knowledge Manager Server enables a data connection between ABB Knowledge Manager 
+(ABBKM) and Seeq.   
 
-It is recommended that you initially test with a "test" version of your Seeq Remote Agent. This will seperate your production connections from your test connections, allowing you to restart the remote agent without impacting users. This repository contains an embedded remote agent that allows your development environment to interactively debug your connector. 
+# Documentation
 
-# Environment Setup
+For more on the EEI ABB KM support please see the internal ENDENG Confluence space article here:  
+[ABB Knowledge Manager Seeq Connector (ABBKM)](https://endeng.atlassian.net/wiki/spaces/ENDENG/pages/2363392001/ABB+Knowledge+Manager+ABBKM).
 
-## The Build Environment
+Note: This page is in the private Endeavor Engineering space, so you must have access setup for that space to view.
 
-Before proceeding we recommend you to install java 21 from 
-https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/downloads-list.html and change your build/build.bat 
-scripts to set the JAVA_HOME variable to the location where your java is installed. 
+The most updated documentation can be found on that page.  This README is intended to have basics and act as a pointer 
+to that page.  
+
+## Seeq Connector SDK
+This connector source was refactored to be built from the public Seeq Connector SDK repository on GitHub.  The previously 
+mentioned Confluence link will have more information on reasons for the refactor and how to manage it.
+
+The Seeq Connector SDK is intended for developers that wish to write a Seeq datasource connector that can be loaded by 
+a Seeq agent and facilitate access to data in Seeq.
+
+Seeq connectors can be written in Java or C# but this repository is intended to be used for developing Java Connectors. 
+Java development can occur on Windows, OSX or Ubuntu operating systems.
+
+It is recommended that you initially test with a "test" version of your Seeq Remote Agent. This will seperate your 
+production connections from your test connections, allowing you to restart the remote agent without impacting users. 
+This repository contains an embedded remote agent that allows your development environment to interactively debug your 
+connector.
+
+## Seeq Environment Setup
+
+### The Build Environment
+
+Before proceeding we recommend you to install java 21 from
+https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/downloads-list.html and change your build/build.bat
+scripts to set the JAVA_HOME variable to the location where your java is installed.
 The Java version of the SDK is built with Gradle. We recommend that you
 familiarize yourself with the [basics of Gradle](https://docs.gradle.org/current/userguide/tutorial_using_tasks.html) before proceeding.
 
-## Verifying your Environment
+### Verifying your Environment
 
 Before doing anything else, we recommend that you build the connector template and ensure that it is fully working with
 your system.
 
 From the root directory, execute the `build` command. This command will download dependencies from the web, so make
 sure you have a good internet connection. If you have any non-obvious issues building this project, please post your
-issue along with any error messages on the [Seeq Developer Club forum](https://www.seeq.org/forum/25-seeq-developer-club/). 
+issue along with any error messages on the [Seeq Developer Club forum](https://www.seeq.org/forum/25-seeq-developer-club/).
 
 IntelliJ IDEA is the recommended Integrated Development Environment (IDE) to use for developing and debugging your
 connector. You can use the free IntelliJ IDEA Community Edition.
 
 Import the project into IntelliJ IDEA by taking the following steps:
 
-1. At the IntelliJ launch screen, select *Open or import*. If you're already in an IntelliJ project, select *File* > 
+1. At the IntelliJ launch screen, select *Open or import*. If you're already in an IntelliJ project, select *File* >
    *Open*.
 2. Browse to the extracted *seeq-connector-sdk-java* folder.
 3. Click OK.
 
-On the left-hand side of the screen, you will see a *Project* tab and there will be a seeq-connector-sdk-java 
-**[seeq-connector-sdk]** folder at the top level. There should be a small light-blue square in the bottom-right of the 
+On the left-hand side of the screen, you will see a *Project* tab and there will be a seeq-connector-sdk-java
+**[seeq-connector-sdk]** folder at the top level. There should be a small light-blue square in the bottom-right of the
 folder icon, which indicates that it was recognized as a Gradle project.
 
 The *Build* tab at the bottom should eventually print `BUILD SUCCESSFUL` to indicate that the Gradle project was built
@@ -53,26 +76,26 @@ popup for setting the JDK home directory, select the `java` directory you just i
 Take the following steps to verify your debugging setup:
 
 1. Open the `src/main/java/com/seeq/link/sdk/debugging/Main.java` file in the `seeq-link-sdk-debugging-agent` project.
-1. Modify the URL on the line `String seeqUrl = "https://yourserver.seeq.host";` to match your Seeq server. This URL 
-   may specify either "http" or "https" as appropriate for your server's configuration. You may also specify a specific 
-   port for the connection if the server is not using the standard 80/443 configuration for http/https. Do this by 
+1. Modify the URL on the line `String seeqUrl = "https://yourserver.seeq.host";` to match your Seeq server. This URL
+   may specify either "http" or "https" as appropriate for your server's configuration. You may also specify a specific
+   port for the connection if the server is not using the standard 80/443 configuration for http/https. Do this by
    appending it to the end following a colon. E.g. `http://test.server:12345`
-1. On your Seeq server as a user with administrator permissions, open the Administration page and select the Agents tab. 
-1. Click the +Add Agent button and, in the prompt, provide the hostname of the machine where the development agent will 
-   run in the Machine Name field. Expand the Advanced options and, in the Agent Name field, enter 
+1. On your Seeq server as a user with administrator permissions, open the Administration page and select the Agents tab.
+1. Click the +Add Agent button and, in the prompt, provide the hostname of the machine where the development agent will
+   run in the Machine Name field. Expand the Advanced options and, in the Agent Name field, enter
 
    `Java Connector SDK Debugging Agent`
 
    Click Save and record the displayed One-Time Password value for use in the next step.
-1. Modify the `resources\data\keys\agent.otp` file in the `seeq-link-sdk-debugging-agent` project, replacing 
-   `<your_agent_one_time_password>` with the One-Time Password recorded in the previous step. 
+1. Modify the `resources\data\keys\agent.otp` file in the `seeq-link-sdk-debugging-agent` project, replacing
+   `<your_agent_one_time_password>` with the One-Time Password recorded in the previous step.
 1. Set a breakpoint on the first line of the `main()` function.
 1. From IntelliJ's menu bar, select *View > Tool Windows > Gradle* to open the Gradle tool window, then right-click on
    *seeq-connector-sdk > seeq-link-sdk-debugging-agent > Tasks > application > run* and select *Debug*.
 1. You should hit the breakpoint you set. **This verifies that your IDE built your project correctly and can connect its
    debugger to it.**
-1. With execution paused at the breakpoint, open the `src/main/java/com/mycompany/seeq/link/connector/MyConnector.java` 
-   file in the `mycompany-seeq-link-connector-myconnector` and put a breakpoint on the first line of the `initialize()` 
+1. With execution paused at the breakpoint, open the `src/main/java/com/mycompany/seeq/link/connector/MyConnector.java`
+   file in the `mycompany-seeq-link-connector-myconnector` and put a breakpoint on the first line of the `initialize()`
    function.
 1. Resume execution (*Run > Debugging Actions > Resume Program*). You should hit the next breakpoint. **This verifies
    that the debugging agent can load the template connector correctly.**
@@ -82,11 +105,11 @@ Take the following steps to verify your debugging setup:
 1. In Seeq Workbench's *Data* tab, search for `simulated`.
 1. A list of simulated signals should appear in the results. Click on any of the results.
 1. The signal should be added to the *Details* pane and a repeating waveform should be shown in the trend. **This
-    verifies that the template connector is able to index its signals and respond to data queries.**
+   verifies that the template connector is able to index its signals and respond to data queries.**
 
 Now you're ready to start development!
 
-## Developing your Connector
+### Developing your Connector
 
 You will probably want to adjust the name and group of your connector. You can do so by using rename refactorings on the
 classes and folders in your IDE. You'll also have to adjust ALL the `settings.gradle.kts` and `build.gradle.kts`
@@ -99,17 +122,17 @@ correct class name. If you use rename refactoring in your IDE, it should update 
 
 You can add additional dependencies in the `build.gradle.kts` file in your connector's folder.
 
-The `build.gradle.kts` file provides the `project.version` variable which can be used to maintain semantic versioning in 
-your Connector. The value specified here will appear in the Administration page of the Seeq Server and can help you 
-determine what version is deployed to each Agent and whether an upgrade of the Connector is necessary. 
+The `build.gradle.kts` file provides the `project.version` variable which can be used to maintain semantic versioning in
+your Connector. The value specified here will appear in the Administration page of the Seeq Server and can help you
+determine what version is deployed to each Agent and whether an upgrade of the Connector is necessary.
 
 The `gradle.properties` file allows you to declare a Minimum Seeq Link SDK Version value with `seeqLinkSDKVersion`.
-This value will help enforce compatibility between your Connector and any Agent where it is deployed. Agent versions 
-exactly match the version number of the Seeq Link SDK they provide. By specifying the minimum version of the Seeq 
-Link SDK that provides the necessary features for your Connector, any Agent that attempts to load your Connector will 
-be able to check that it satisfies your Connector's requirements. This property is referenced in both the Connector and 
-the provided debugging Agent's `build.gradle.kts` files. Available versions of the Seeq Link SDK can be found in the 
-Mavent repository at https://repo1.maven.org/maven2/com/seeq/link/seeq-link-sdk/. 
+This value will help enforce compatibility between your Connector and any Agent where it is deployed. Agent versions
+exactly match the version number of the Seeq Link SDK they provide. By specifying the minimum version of the Seeq
+Link SDK that provides the necessary features for your Connector, any Agent that attempts to load your Connector will
+be able to check that it satisfies your Connector's requirements. This property is referenced in both the Connector and
+the provided debugging Agent's `build.gradle.kts` files. Available versions of the Seeq Link SDK can be found in the
+Mavent repository at https://repo1.maven.org/maven2/com/seeq/link/seeq-link-sdk/.
 
 Once you are ready to start developing, just open the `MyConnector.java` and `MyConnection.java` files in your IDE and
 start reading through the heavily-annotated source code. The template connector uses a small class called
@@ -119,13 +142,13 @@ the project and still build without errors.
 Any log messages you create using the `log()` method on `ConnectorServiceV2` and `DatasourceConnectionServiceV2` will go
 to the debug console and to the `java/seeq-link-sdk-debugging-agent/build/log/jvm-debugging-agent.log` file.
 
-## Deploying your Connector
+### Deploying your Connector
 
 When you are ready to deploy your connector to a test or production remote agent, execute the `build` command. A zip file will be
 created in the `build/distributions` folder of your connector.
 
 1. Shut down the Seeq Remote Agent - execute `seeq stop` in the Seeq CLI
-1. Copy the generated zip file to the `plugins/connectors` folder within Seeq's `data` folder (The data folder 
+1. Copy the generated zip file to the `plugins/connectors` folder within Seeq's `data` folder (The data folder
    is usually `C:\ProgramData\Seeq\data`)
 1. Extract the contents of the zip file.
 1. Start the Seeq Remote Agent - execute `seeq start` in the Seeq CLI
@@ -135,3 +158,28 @@ your remote agent.
 
 Once deployed, log messages you create using the `log()` method on `ConnectorServiceV2`
 and `DatasourceConnectionServiceV2` will go to `log/jvm-link/jvm-link.log` file in the Seeq data folder.
+
+# User Guide
+See:  [ABB Knowledge Manager Seeq Connector (ABBKM)](https://endeng.atlassian.net/wiki/spaces/ENDENG/pages/2363392001/ABB+Knowledge+Manager+ABBKM).
+
+# Installation
+See: [ABB Knowledge Manager Seeq Connector (ABBKM)](https://endeng.atlassian.net/wiki/spaces/ENDENG/pages/2363392001/ABB+Knowledge+Manager+ABBKM).
+
+## Source code
+
+Source is in the EEI endeavoreng GitHub Organization.  It is a private repository, and to work with it, you must be granted
+access by an EEI administrator.  
+
+**Repository Link:**  [seeq-connector-abbkm-java](https://github.com/endeavoreng/seeq-connector-abbkm-java)
+
+## Versioning
+
+Current version is 100.0.0
+
+Semantic versioning is used for this connector.  The format roughly follows the Seeq versioning started with Seeq 
+Continuous Delivery (CD).  The major version for Seeq CD is 100 and this part is expected to align with the major 
+version of this connector.  In general the MAJOR.MINOR.PATCH semantic versioning will be organized as follows:
+MARJOR = Seeq major version
+MINOR = The specific connector release. 
+PATCH = The build of this release. 
+
