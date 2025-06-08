@@ -1,4 +1,4 @@
-package com.abbkm.seeq.link.connector;
+package com.abbkmv4.seeq.link.connector;
 
 import com.seeq.link.sdk.DefaultConnectorConfig;
 

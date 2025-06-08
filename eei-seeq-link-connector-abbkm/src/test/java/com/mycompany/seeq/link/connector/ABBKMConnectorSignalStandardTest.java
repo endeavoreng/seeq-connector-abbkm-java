@@ -7,10 +7,10 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.Map;
 
-import com.abbkm.seeq.link.connector.ABBKMConnector;
-import com.abbkm.seeq.link.connector.ABBKMConnection;
-import com.abbkm.seeq.link.connector.ABBKMConnectionConfigV4;
-import com.abbkm.seeq.link.connector.ABBKMConnectorConfigV4;
+import com.abbkmv4.seeq.link.connector.ABBKMConnector;
+import com.abbkmv4.seeq.link.connector.ABBKMConnection;
+import com.abbkmv4.seeq.link.connector.ABBKMConnectionConfigV4;
+import com.abbkmv4.seeq.link.connector.ABBKMConnectorConfigV4;
 import com.seeq.link.sdk.ConfigObject;
 import com.seeq.link.sdk.interfaces.ConnectorServiceV2;
 import com.seeq.link.sdk.testframework.SignalPullConnectionTestSuite;

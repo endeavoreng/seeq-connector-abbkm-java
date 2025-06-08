@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.abbkm.seeq.link.connector.ABBKMConnection;
-import com.abbkm.seeq.link.connector.ABBKMConnectionConfigV4;
+import com.abbkmv4.seeq.link.connector.ABBKMConnection;
+import com.abbkmv4.seeq.link.connector.ABBKMConnectionConfigV4;
 import org.junit.Test;
 import org.slf4j.Logger;
 

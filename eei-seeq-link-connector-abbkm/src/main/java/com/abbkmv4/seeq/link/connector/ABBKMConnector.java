@@ -1,4 +1,4 @@
-package com.abbkm.seeq.link.connector;
+package com.abbkmv4.seeq.link.connector;
 
 import java.util.UUID;
 
@@ -43,10 +43,19 @@ public class ABBKMConnector implements ConnectorV2 {
             // want to start up in a functioning state.
             connectionConfig.setEnabled(true);
 
-            // These configuration variables are specific to the MyConnector example. You'll likely remove them.
-            // We'll specify a large enough tag count that we observe the batching mechanism in action.
-            connectionConfig.setTagCount(5000);
-            connectionConfig.setSamplePeriod("15m");
+            // ABBKM specific settings
+            connectionConfig.setHierarchyMode("tagid");
+            connectionConfig.setWebServiceMethod("http");
+            connectionConfig.setWebServiceIP("10.138.207.92");
+            connectionConfig.setWebServiceURL("/ExtDataAccess/api");
+            connectionConfig.setWebServiceTimeout(180000);
+            connectionConfig.setUserTimeZone("GMT+02:00");
+
+            connectionConfig.setUserName("test");
+            connectionConfig.setPassword("test@endeavoreng.com");
+            connectionConfig.setDomain(null);
+            connectionConfig.setWebServicePort(80);
+            connectionConfig.setDebugIndexFile(null);
 
             // Add the new connection configuration to its parent connector
             this.connectorConfig.getConnections().add(connectionConfig);
@@ -63,27 +72,6 @@ public class ABBKMConnector implements ConnectorV2 {
 
             if (!connectionConfig.isEnabled()) {
                 // If the connection is not enabled, then do not add it to the list of connections
-                continue;
-            }
-
-            // do further validation of the connection configuration to ensure only properly configured connections
-            // are processed. In our case, we need a valid SamplePeriod, and if a TagCount is provided, it must not be
-            // a negative value.
-            if (connectionConfig.getSamplePeriod() == null || connectionConfig.getSamplePeriod().isEmpty()) {
-                // provide details of the invalid configuration so it can be addressed
-                this.connectorService.log().warn("Connection '{}' has an invalid SamplePeriod. It will be ignored.",
-                        connectionConfig.getName());
-
-                // you can also disable the connection so it is no longer processed until changes are made
-                connectionConfig.setEnabled(false);
-
-                continue;
-            }
-
-            if (connectionConfig.getTagCount() < 0) {
-                this.connectorService.log().warn("Connection '{}' has an invalid TagCount. It will be ignored.",
-                        connectionConfig.getName());
-                connectionConfig.setEnabled(false);
                 continue;
             }
 
