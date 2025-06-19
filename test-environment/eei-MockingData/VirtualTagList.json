@@ -1,0 +1,62 @@
+{
+"TimeStamp": "2021-03-16T09:16:26.7983683+01:00",
+"PlantName": "MOCK",
+"Tags": [
+	{
+        "TagId": "42137|-||HRS",
+		"Name": "564+TEMP+CEM_STD|-||HRS",
+		"GroupNr": 1,
+		"ChannelNr": 12,
+		"Description": "Temperature @564",
+        "KmPath": "\\Logs\\3.0 User\\PIMS Rebuild\\500\\CM1\\Others"
+	},
+	{
+        "TagId": "42137|*||PRI",
+		"Name": "564+TEMP+CEM_STD|*||PRI",
+		"GroupNr": 1,
+		"ChannelNr": 12,
+		"Description": "Temperature @564",
+        "KmPath": "\\Logs\\3.0 User\\PIMS Rebuild\\500\\CM1\\Others"
+	},
+	{
+        "TagId": "42137|CEM II/B-LL 32.5R||HRS",
+		"Name": "564+TEMP+CEM_STD|CEM II/B-LL 32.5R||HRS",
+		"GroupNr": 1,
+		"ChannelNr": 12,
+		"Description": "Temperature @564",
+        "KmPath": "\\Logs\\3.0 User\\PIMS Rebuild\\500\\CM1\\Others"
+	},
+	{
+        "TagId": "57872|||HRS",
+		"Name": "UV.601+TCONS+BAG25_SUM?|||HRS",
+		"GroupNr": 1,
+		"ChannelNr": 12,
+		"Description": "Temperature Consolidated @601",
+        "KmPath": "\\Logs\\3.0 User\\PIMS Rebuild\\500\\CM1\\Others"
+	},
+	{
+        "TagId": "17193|*||PRI",
+		"Name": "532-DB3.50:SPT|*||PRI",
+		"GroupNr": 1,
+		"ChannelNr": 12,
+		"Description": "SPT Sort related",
+        "KmPath": "\\Logs\\3.0 User\\PIMS Rebuild\\500\\CM1\\SPT"
+	},
+	{
+        "TagId": "17193|CEM II/B-LL 32.5R||HRS",
+		"Name": "532-DB3.50:SPT|CEM II/B-LL 32.5R||HRS",
+		"GroupNr": 1,
+		"ChannelNr": 12,
+		"Description": "SPT Sort related",
+        "KmPath": "\\Logs\\3.0 User\\PIMS Rebuild\\500\\CM1\\SPT"
+	},
+	{
+        "TagId": "17193|FLUVIO 4||HRS",
+		"Name": "532-DB3.50:SPT|FLUVIO 4||HRS",
+		"GroupNr": 1,
+		"ChannelNr": 12,
+		"Description": "SPT Sort related",
+        "KmPath": "\\Logs\\3.0 User\\PIMS Rebuild\\500\\CM1\\SPT"
+	}
+]
+}

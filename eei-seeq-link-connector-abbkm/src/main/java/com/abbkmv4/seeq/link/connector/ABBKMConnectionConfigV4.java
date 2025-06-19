@@ -17,7 +17,15 @@ public class ABBKMConnectionConfigV4 extends DefaultPullDatasourceConnectionConf
     private String password;
     private String domain;
     private String debugIndexFile;
+    private boolean virtualForgeEnabled;
 
+
+    public void setVirtualForgeEnabled(boolean enabled) {
+        virtualForgeEnabled = enabled;
+    }
+    public boolean getVirtualForgeEnabled() {
+        return this.virtualForgeEnabled;
+    }
 
     public void setWebServiceTimeout(int port) {
         this.webServiceTimeout = port;

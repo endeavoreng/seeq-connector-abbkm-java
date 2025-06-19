@@ -13,7 +13,8 @@ application {
 
 tasks {
     named("run") {
-        dependsOn(":mycompany-seeq-link-connector-myconnector:installDist")
+        // Comment out the mycompany below if not wanting to run it from the debug agent.
+        // dependsOn(":mycompany-seeq-link-connector-myconnector:installDist")
         dependsOn(":eei-seeq-link-connector-abbkm:installDist")
     }
 }

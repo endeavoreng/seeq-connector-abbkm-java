@@ -56,6 +56,7 @@ public class ABBKMConnector implements ConnectorV2 {
             connectionConfig.setDomain(null);
             connectionConfig.setWebServicePort(80);
             connectionConfig.setDebugIndexFile(null);
+            connectionConfig.setVirtualForgeEnabled(false);
 
             // Add the new connection configuration to its parent connector
             this.connectorConfig.getConnections().add(connectionConfig);

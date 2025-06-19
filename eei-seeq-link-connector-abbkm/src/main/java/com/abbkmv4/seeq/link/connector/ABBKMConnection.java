@@ -49,6 +49,7 @@ public class ABBKMConnection implements SignalPullDatasourceConnection, Conditio
     private SecureApi logDataApi;
     private DatasourceConnectionServiceV2 connectionService;
     private String serverURL;
+    private boolean virtualForgeEnabled;
 
     public ABBKMConnection(ABBKMConnector connector, ABBKMConnectionConfigV4 connectionConfig) {
         // You will generally want to accept a configuration object from your connector parent. Do not do any I/O in the
@@ -104,6 +105,9 @@ public class ABBKMConnection implements SignalPullDatasourceConnection, Conditio
         // from the act of connecting, you could do it here.
 
         this.connectionService = connectionService;
+
+        // Set if the EEI VirtualForge interactions are enabled.
+        virtualForgeEnabled = this.connectionConfig.getVirtualForgeEnabled();
 
         // It's your job to inspect your configuration to see if the user has enabled this connection.
         if (this.connectionConfig.isEnabled()) {
