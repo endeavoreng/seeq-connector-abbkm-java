@@ -108,6 +108,7 @@ public class ABBKMConnection implements SignalPullDatasourceConnection, Conditio
 
         // Set if the EEI VirtualForge interactions are enabled.
         virtualForgeEnabled = this.connectionConfig.getVirtualForgeEnabled();
+        this.connectionService.log().info("VirtualForge enable is: {}", virtualForgeEnabled);
 
         // It's your job to inspect your configuration to see if the user has enabled this connection.
         if (this.connectionConfig.isEnabled()) {

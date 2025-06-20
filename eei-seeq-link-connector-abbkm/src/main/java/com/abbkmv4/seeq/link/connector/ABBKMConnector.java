@@ -52,7 +52,7 @@ public class ABBKMConnector implements ConnectorV2 {
             connectionConfig.setUserTimeZone("GMT+02:00");
 
             connectionConfig.setUserName("test");
-            connectionConfig.setPassword("test@endeavoreng.com");
+            connectionConfig.setPassword("password");
             connectionConfig.setDomain(null);
             connectionConfig.setWebServicePort(80);
             connectionConfig.setDebugIndexFile(null);

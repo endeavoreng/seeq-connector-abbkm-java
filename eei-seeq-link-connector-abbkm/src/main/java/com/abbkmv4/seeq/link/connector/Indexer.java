@@ -35,15 +35,15 @@ public class Indexer {
 	}
 
 	private void debug(String msg) {
-		log.debug(SecureApi.VERSION +": "+ msg);
+        log.debug("{}: {}", SecureApi.VERSION, msg);
 	}
 	
 	private void info(String msg) {
-		log.info(SecureApi.VERSION +": "+msg);
+        log.info("{}: {}", SecureApi.VERSION, msg);
 	}
 
 	private void error(String msg) {
-		log.error(SecureApi.VERSION +": "+msg);
+        log.error("{}: {}", SecureApi.VERSION, msg);
 	}
 
 	public void CreateSeeqHierarchy(DatasourceConnectionServiceV2 connectionService, String mode, String plantName)  {
@@ -65,11 +65,13 @@ public class Indexer {
 			return;
 		}
 		
+		String infoMsg = "Received" + queryResult;
 		if (queryResult.length() > 1000) {
-			info("Received (trunc): " + queryResult.substring(0, 999));
+			infoMsg = infoMsg + " (trunc): " + queryResult.substring(0, 999);
 		} else {
-			info("Received: " + queryResult);
+			infoMsg = infoMsg + " (raw): " + queryResult;
 		}
+		info(infoMsg);
 		
 //		if (this.debugOutputJsonString != null) {
 //			try {
@@ -87,9 +89,16 @@ public class Indexer {
 //			    }
 //		}
 		
-		TagList tagList = parseTagList(queryResult);
-		connectionService.log().info("Retrieved " + Integer.toString(tagList.Tags.size()) + " tags");
-		this.setTags(tagList, connectionService, mode, plantName);
+		try {
+			TagList tagList = parseTagList(queryResult);
+            connectionService.log().info("Retrieved {} tags", Integer.toString(tagList.Tags.size()));
+			this.setTags(tagList, connectionService, mode, plantName);
+		} catch (Exception e) {
+			String errMsg = "Error parsing Index TagList return.  errorClass: '%s', errorMessage: '%s', infoMsg: '%s', ".formatted(e.getClass(), e.getMessage(), infoMsg);
+			connectionService.log().error(errMsg);
+		}
+
+
 	}
 
 	public static TagList parseTagList(String data) {
