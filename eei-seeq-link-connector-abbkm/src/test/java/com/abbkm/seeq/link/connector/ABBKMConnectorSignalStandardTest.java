@@ -1,4 +1,4 @@
-package com.mycompany.seeq.link.connector;
+package com.abbkm.seeq.link.connector;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;

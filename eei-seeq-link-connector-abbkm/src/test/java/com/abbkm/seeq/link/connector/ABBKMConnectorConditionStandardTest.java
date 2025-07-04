@@ -1,4 +1,4 @@
-package com.mycompany.seeq.link.connector;
+package com.abbkm.seeq.link.connector;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -15,7 +15,7 @@ import com.seeq.link.sdk.ConfigObject;
 import com.seeq.link.sdk.interfaces.ConnectorServiceV2;
 import com.seeq.link.sdk.testframework.ConditionPullConnectionTestSuite;
 
-public class ABBKMConnectorConditionStandardTest extends ConditionPullConnectionTestSuite<ABBKMConnection, ABBKMConnector,
+public class BBKMConnectorConditionStandardTest extends ConditionPullConnectionTestSuite<ABBKMConnection, ABBKMConnector,
         ABBKMConnectionConfigV4, ABBKMConnectorConfigV4> {
     private ABBKMConnector ABBKMConnectorMock;
     private ABBKMConnection ABBKMConnection;

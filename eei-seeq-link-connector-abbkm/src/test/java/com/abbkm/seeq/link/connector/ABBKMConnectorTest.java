@@ -1,4 +1,4 @@
-package com.mycompany.seeq.link.connector;
+package com.abbkm.seeq.link.connector;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
