@@ -1,13 +1,13 @@
 {
   "Version" : "com.abbkmv4.seeq.link.connector.ABBKMConnectorConfigV4",
   "Connections" : [ {
-    "Name" : "ABBKM-DebugTestV2",
-    "Id" : "4264e5c9-a06d-43dd-92bd-fa1f94c36359",
+    "Name" : "ABBKM-DEV",
+    "Id" : "b28adc18-d543-43f4-9f08-91ca7c1e76bd",
     "Enabled" : true,
     "Indexing" : {
       "Frequency" : "1w",
       "OnStartupAndConfigChange" : false,
-      "Next" : "2025-07-04T02:10:15.783201300Z"
+      "Next" : "2025-07-14T16:59:00.083764600-06:00[America/Denver]"
     },
     "Transforms" : null,
     "MaxConcurrentRequests" : null,
@@ -19,10 +19,10 @@
     "WebServiceMethod" : "http",
     "HierarchyMode" : "tagid",
     "UserTimeZone" : "GMT+02:00",
-    "UserName" : "DevAdmin",
-    "Password" : "!x@3?dGkP",
-    "Domain" : null,
-    "DebugIndexFile" : "C:/log/TestDebugIndexFile",
+    "UserName" : "test",
+    "Password" : "ML#4yHYR",
+    "Domain" : "EEI-AD",
+    "DebugIndexFile" : "E:/log/TestDebugIndexFile",
     "VirtualForgeEnabled" : false,
     "FieldConfigurations" : null
   } ]
