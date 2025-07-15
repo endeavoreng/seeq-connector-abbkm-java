@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.abbkmv4.seeq.link.connector"
-version = "100.0.0-SNAPSHOT"
+version = "100.1.0"
 
 dependencies {
     compileOnly("com.seeq.link:seeq-link-sdk:${project.properties["seeqLinkSDKVersion"]}")
